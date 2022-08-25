@@ -3,8 +3,18 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-require('./config/database')
+const session = require('express-session');
+const passport = require('passport');
+var methodOverride = require('method-override');
 
+// load the env consts
+require('dotenv').config();
+
+// connect to the MongoDB with mongoose
+require('./config/database')
+require('./config/passport');
+
+// require our routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -14,11 +24,22 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//Authentication
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
