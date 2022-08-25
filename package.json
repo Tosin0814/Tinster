@@ -18,6 +18,8 @@
     "mongoose": "^6.5.3",
     "morgan": "~1.9.1",
     "passport": "^0.6.0",
+    "passport-google-oauth": "^2.0.0",
+    "regex": "^0.1.1",
     "session": "^0.1.0"
   }
 }
