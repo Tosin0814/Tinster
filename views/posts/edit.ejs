@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>New Tinster Post</title>
+    <title>Edit Tinster Post</title>
     <!-- Google Icon Fonts used by Materialize -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Materialize CSS Framework -->
@@ -33,14 +33,14 @@
     <main>
         <p><%= user.name %> has successfully signed in!</p>
         <div class="form-width flex-ctr">
-            <form id="new-form" action="/posts" method="post">
+            <form id="edit-form" action="/posts/<%= post._id %> ?_method=PUT" method="post">
                 <label>Image </label>
-                <input type="text" name="img" placeholder="Enter image URL">
+                <input type="text" name="img" value="<%= post.img %>">
                 <br>
                 <br>
                 <label>Description </label>
-                <input type="text" name="description">
-                <input type="submit" value="Create Post">
+                <input type="text" name="description" value="<%= post.description %>">
+                <input type="submit" value="Save">
             </form>
         </div>
     </main>

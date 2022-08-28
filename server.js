@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var fs = require('fs');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -39,6 +40,8 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 
 
 app.use('/', indexRouter);

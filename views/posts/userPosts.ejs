@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>New Tinster Post</title>
+    <title>My Tinster Posts</title>
     <!-- Google Icon Fonts used by Materialize -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Materialize CSS Framework -->
@@ -31,17 +31,26 @@
     </header>
 
     <main>
+        <div class="text-center flex-ctr">
         <p><%= user.name %> has successfully signed in!</p>
-        <div class="form-width flex-ctr">
-            <form id="new-form" action="/posts" method="post">
-                <label>Image </label>
-                <input type="text" name="img" placeholder="Enter image URL">
-                <br>
-                <br>
-                <label>Description </label>
-                <input type="text" name="description">
-                <input type="submit" value="Create Post">
-            </form>
+            <% for (let i = posts.length - 1; i >= 0; i--) { %>
+                <div class="post">
+                    <ul>
+                        <li><%= posts[i].username %></li>
+                        <li><img src="<%= posts[i].img %>" alt="Cannot find image"></li>
+                        <li><%= posts[i].description %></li>
+                    </ul>
+                    <hr>
+                    <div>
+                        <form name="edit" action="/posts/<%= posts[i]._id %>/edit">
+                            <button type="submit">Edit Post</button>
+                        </form>
+                        <form action="/posts/<%= posts[i]._id %> ?_method=DELETE" method="post">
+                            <button type="submit">Delete Post</button>
+                        </form>
+                    </div>
+                </div>
+            <% } %>
         </div>
     </main>
     
