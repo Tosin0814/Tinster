@@ -1,4 +1,4 @@
-const post = require("../models/post");
+const User = require("../models/user");
 const Post = require("../models/post")
 
 
@@ -30,15 +30,21 @@ function create(req, res) {
     newPost.userId = req.user._id;
     newPost.save()
     .then(function () {
-        console.log(newPost)
         res.redirect('/posts')
     })
     .catch()
 }
 
 function show(req, res) {
-    res.render('posts/show', {
-        post: post.getOne(req.params.id)
+    Post.findById(req.params.id)
+    .then(function (post) {
+        console.log(post)
+        res.render('posts/show', {
+            user: req.user,
+            post
+        })
+    }).catch(function (err) {
+        console.log(err)
     })
 }
 
@@ -63,19 +69,26 @@ function editPost(req, res) {
     })
 }
 
+
+// Not working
 function updatePost(req, res) {
-    Post.findByIdAndUpdate(req.params.id, {$set:req.body}, {new:true},function (err, post) {
+    Post.findAndUpdate({_id:req.params.id}, {$set:req.body}, {new:true},function (err, post) {
         console.log(post)
+    }).then(function () {
+        res.redirect('/posts')
     })
-    res.redirect('/posts')
 }
 
+// Not working
 function deletePost(req, res) {
-    Post.findByIdAndDelete(req.params.id, function(err, post) {
-        console.log(post)
-        res.redirect('/posts');
-    });
-    
+    Post.findById(req.params.id)
+    .then(function(err, post) {
+        console.log("post: ", post)
+        post.remove()
+    })
+    .then(function () {
+        res.redirect('/posts')
+    })
 }
 
 
