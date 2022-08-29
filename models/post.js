@@ -21,9 +21,6 @@ const likeSchema = new Schema({
     username: {
         type: String
     },
-    like: {
-        type: Boolean
-    }
 
 },{
     timestamps: true

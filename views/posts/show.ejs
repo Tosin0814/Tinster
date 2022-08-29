@@ -32,7 +32,27 @@
                 <div class="post">
                     <ul>
                         <li><%= post.username %></li>
-                        <li><img src="<%= post.img %>" alt="Cannot find image"></li>
+                        <li>
+                          <div class="show-image">
+                            <img src="<%= post.img %>" alt="Cannot find image">
+                            <% let likesUserIds = [] %>
+                            <% post.likes.forEach(like => { %>
+                                <% likesUserIds.push(like.userId) %>
+                            <% }) %>
+                            <% console.log('likesUserIds: ', likesUserIds) %>
+                            <% if (likesUserIds.includes('user._id')) { %>
+                                <% console.log('Contains ', user._id) %>
+                                <form name="remove-like-form" action="" method="post">
+                                    <button class="liked" type="submit">Liked</button>
+                                </form>
+                            <% } else if (!(likesUserIds.includes('user._id'))) { %>
+                                <% console.log('Does not contain ', user._id) %>
+                                <!-- <form name="add-like-form" action="/posts/<%= post._id %>/likes" method="POST">
+                                    <button class="like" type="submit">Like</button>
+                                </form> -->
+                            <% } %>
+                          </div>
+                        </li>
                         <li><%= post.description %></li>
                     </ul>
                     <div>

@@ -33,7 +33,13 @@
                 <div class="post">
                     <ul>
                         <li><%= posts[i].username %></li>
-                        <li><img src="<%= posts[i].img %>" alt="Cannot find image"></li>
+                        <li>
+                            <div class="index-image">
+                                <img src="<%= posts[i].img %>" alt="Cannot find image">
+                                
+                                
+                            </div>
+                        </li>
                         <li><%= posts[i].description %></li>
                         <a href="/posts/<%= posts[i]._id %>">View Details</a>
                     </ul>

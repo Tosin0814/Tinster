@@ -38,7 +38,7 @@ function create(req, res) {
 function show(req, res) {
     Post.findById(req.params.id)
     .then(function (post) {
-        console.log(post)
+        // console.log(post)
         res.render('posts/show', {
             user: req.user,
             post

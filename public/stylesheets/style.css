@@ -27,7 +27,16 @@ button > a {
   text-decoration: none;
 }
 
-li > img {
+
+.index-image > img {
+  max-width: 500px;
+}
+
+.show-image {
+  position: relative;
+}
+
+.show-image > img {
   max-width: 500px;
 }
 
@@ -42,4 +51,17 @@ li > img {
   width: 50%;
   border: 1px solid black;
   /* background-color: red; */
+}
+
+.like {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.liked {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  background-color: red;
 }

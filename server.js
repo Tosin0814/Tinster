@@ -1,12 +1,12 @@
-var createError = require('http-errors');
-var express = require('express');
-var fs = require('fs');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
-var methodOverride = require('method-override');
+const methodOverride = require('method-override');
 
 // load the env consts
 require('dotenv').config();
@@ -16,11 +16,12 @@ require('./config/database')
 require('./config/passport');
 
 // require our routes
-var indexRouter = require('./routes/index');
-var postsRouter = require('./routes/posts');
-var commentsRouter = require('./routes/comments')
+const indexRouter = require('./routes/index');
+const postsRouter = require('./routes/posts');
+const commentsRouter = require('./routes/comments')
+const likesRouter = require('./routes/likes')
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -49,6 +50,7 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/posts', postsRouter);
 app.use('/', commentsRouter)
+app.use('/', likesRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
