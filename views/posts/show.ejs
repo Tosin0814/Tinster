@@ -27,15 +27,21 @@
     </nav>
 
     <main>
+        <% let likesUserIds = [] %>
         <div class="text-center flex-ctr">
-        <p><%= user.name %> has successfully signed in!</p>
+        <h3>
+          <% if (post.title) { %>
+            <%= post.title %>
+          <% } else { %>
+            Post
+          <% } %>
+        </h3>
                 <div class="post">
                     <ul>
                         <li><%= post.username %></li>
                         <li>
                           <div class="show-image">
                             <img src="<%= post.img %>" alt="Cannot find image">
-                            <% let likesUserIds = [] %>
                             <% post.likes.forEach(like => { %>
                                 <% likesUserIds.push(like.userId.toString()) %>
                             <% }) %>
@@ -51,7 +57,15 @@
                           </div>
                         </li>
                         <li><%= post.description %></li>
+                        <li>
+                          <% if (likesUserIds.length === 1) { %>
+                            <%= likesUserIds.length %> Like
+                          <% } else { %>
+                            <%= likesUserIds.length %> Likes
+                          <% } %>
+                        </li>
                     </ul>
+                    <p> Created on <%= post.createdAt%></p>
                     <div>
                         <h5>Comments</h5>
                         <form id="add-comment-form" action="/posts/<%= post._id %>/comments" method="POST">
@@ -61,17 +75,18 @@
                     </div>
                     <br><hr>
                     <% if (post.comments.length) { %>
-                      <% post.comments.forEach(comment => { %>
-                        <span class="card-title">
-                          <% if (user.avatar) { %>
-                            <img src="<%= user.avatar %>" alt="" class="circle responsive-img">&nbsp;&nbsp;
-                          <% } else { %>
-                            <i class="small material-icons">perm_identity</i>
-                          <% } %>                        
-                        </span>
-                        <h6><%= comment.username %></h6>
-                        <p><%= comment.commentText %></p>
-                      <% }) %>
+                      <% for (let i = post.comments.length - 1; i >= 0; i--) { %>
+                          <span class="card-title">
+                            <% if (user.avatar) { %>
+                              <img src="<%= user.avatar %>" alt="" class="circle responsive-img">&nbsp;&nbsp;
+                            <% } else { %>
+                              <i class="small material-icons">perm_identity</i>
+                            <% } %>                        
+                          </span>
+                          <h6><%= post.comments[i].username %></h6>
+                          <p><%= post.comments[i].commentText %></p>
+                          <p> Created on <%= post.comments[i].createdAt%></p>
+                      <% } %>
                     <% } else { %>
                       <h6>No comments</h6>
                     <% } %>

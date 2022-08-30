@@ -17,9 +17,10 @@
   </head>
   <body>
     <header>
-        <a href="/posts" class="brand-logo left">Tinster Posts</a>
+        <a href="/posts" class="brand-logo left">Tinster</a>
         <!-- Add logout UI here -->
         <ul class="right">
+            <a href="/posts">Tinster Posts</a>
             <li><a href="/posts/new">ADD POST</a></li>
             <li><a href="/posts/all">My Posts</a></li>
             <li><a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a></li>
@@ -53,8 +54,16 @@
                             </div>
                         </li>
                         <li><%= posts[i].description %></li>
+                        <li>
+                            <% if (likesUserIds.length === 1) { %>
+                              <%= likesUserIds.length %> Like
+                            <% } else { %>
+                              <%= likesUserIds.length %> Likes
+                            <% } %>
+                          </li>
                         <a href="/posts/<%= posts[i]._id %>">View Details</a>
                     </ul>
+                    <p> Created on <%= posts[i].createdAt%></p>
                 </div>
             <% } %>
         </div>

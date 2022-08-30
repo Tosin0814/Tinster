@@ -28,6 +28,7 @@ const likeSchema = new Schema({
 
 const postSchema = new Schema({
     username: String,
+    title: String,
     img: { 
         type: String,
     },

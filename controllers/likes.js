@@ -6,7 +6,7 @@ function create(req, res) {
         req.body.username = req.user.name;
         post.likes.push(req.body);
         post.save(function (err) {
-            res.redirect(`/posts/${post._id}`)
+            res.redirect(`/posts`)
         })
     })
 }
