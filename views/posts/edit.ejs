@@ -33,7 +33,7 @@
     <main>
         <p><%= user.name %> has successfully signed in!</p>
         <div class="form-width flex-ctr">
-            <form id="edit-form" action="/posts/<%= post._id %> ?_method=PUT" method="post">
+            <form id="edit-form" action="/posts/<%= post._id %>?_method=PUT" method="POST">
                 <label>Image </label>
                 <input type="text" name="img" value="<%= post.img %>">
                 <br>

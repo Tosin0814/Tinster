@@ -6,7 +6,6 @@ function create(req, res) {
         req.body.username = req.user.name;
         post.comments.push(req.body);
         post.save(function (err) {
-            // console.log(post)
             res.redirect(`/posts/${post._id}`)
         })
     })

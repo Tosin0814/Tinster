@@ -1,5 +1,7 @@
 const User = require("../models/user");
-const Post = require("../models/post")
+const Post = require("../models/post");
+const { default: mongoose } = require("mongoose");
+const post = require("../models/post");
 
 
 function index(req, res, next) {
@@ -38,7 +40,6 @@ function create(req, res) {
 function show(req, res) {
     Post.findById(req.params.id)
     .then(function (post) {
-        // console.log(post)
         res.render('posts/show', {
             user: req.user,
             post
@@ -61,7 +62,6 @@ function userPosts(req, res) {
 function editPost(req, res) {
     Post.findById(req.params.id)
     .then(function (post) {
-        console.log(post)
         res.render('posts/edit', {
             user: req.user,
             post,
@@ -70,24 +70,44 @@ function editPost(req, res) {
 }
 
 
-// Not working
+// function updatePost(req, res) {
+//     Post.findById(req.params.id, function (err, post) {
+//         post.update(req.body, function () {
+//             res.redirect(`/posts/${post._id}`)
+//         })
+//     })
+// }
+
 function updatePost(req, res) {
-    Post.findAndUpdate({_id:req.params.id}, {$set:req.body}, {new:true},function (err, post) {
-        console.log(post)
-    }).then(function () {
-        res.redirect('/posts')
+    Post.findById(req.params.id)
+    .then(function (post) {
+        post.update(req.body, function () {
+            res.redirect(`/posts/${post._id}`)
+        })
+    })
+    .catch(function (err) {
+        
     })
 }
 
-// Not working
+// function deletePost(req, res) {
+//     Post.findById(req.params.id, function (err, post) {
+//         post.remove(function (err) {
+//             res.redirect('/posts/all')
+
+//         })
+//     })
+// }
+
 function deletePost(req, res) {
     Post.findById(req.params.id)
-    .then(function(err, post) {
-        console.log("post: ", post)
-        post.remove()
+    .then(function (post) {
+        post.remove(function () {
+            res.redirect('/posts/all')
+        })
     })
-    .then(function () {
-        res.redirect('/posts')
+    .catch(function (err) {
+        
     })
 }
 

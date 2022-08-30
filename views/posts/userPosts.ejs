@@ -37,7 +37,7 @@
                 <div class="post">
                     <ul>
                         <li><%= posts[i].username %></li>
-                        <li><img src="<%= posts[i].img %>" alt="Cannot find image"></li>
+                        <li class="show-image"><img src="<%= posts[i].img %>" alt="Cannot find image"></li>
                         <li><%= posts[i].description %></li>
                     </ul>
                     <hr>
@@ -45,7 +45,7 @@
                         <form name="edit" action="/posts/<%= posts[i]._id %>/edit">
                             <button type="submit">Edit Post</button>
                         </form>
-                        <form action="/posts/<%= posts[i]._id %> ?_method=DELETE" method="POST">
+                        <form action="/posts/<%= posts[i]._id %>?_method=DELETE" method="POST">
                             <button type="submit">Delete Post</button>
                         </form>
                     </div>

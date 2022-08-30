@@ -27,6 +27,9 @@ button > a {
   text-decoration: none;
 }
 
+.index-image {
+  position: relative;
+}
 
 .index-image > img {
   max-width: 500px;
