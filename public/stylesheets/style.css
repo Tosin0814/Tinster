@@ -5,9 +5,48 @@
 body {
   height: 100vh;
   margin: 0;
-  padding-top: 50px;
-  /* background-color: rgba(0, 0, 0, 0.6);
-  color: white; */
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+}
+
+.index-body {
+  /* background-color: wheat; */
+  background: url('../images/alexandra-kirr-Q_MYbs7KdcU-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.home-color {
+  background-color: rgba(0, 0, 0, 0.8);
+  max-width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.home-title > h1 {
+  font-size: 80px;
+  font-weight: 300;
+}
+
+.back-color{
+  background-color: rgba(0, 0, 0, 0.05);
+  max-width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+}
+
+.title {
+  border-bottom: 4px double rgba(0, 0, 0, 0.3);
+  width: 100%;
+  margin-bottom: 20px;
+  padding-top: 40px;
+}
+
+.post-area {
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
 }
 
 .navbar-brand {
@@ -39,6 +78,8 @@ button > a {
 
 .index-image > img {
   max-width: 500px;
+  border: 1px solid black;
+  box-shadow: 3px 3px 4px black;
 }
 
 .show-image {
@@ -46,13 +87,19 @@ button > a {
 }
 
 .show-image > img {
-  max-width: 500px;
+  max-width: 800px;
+  border: 1px solid black;
+  box-shadow: 3px 3px 4px black;
 }
 
+
+
 .post {
-  border: 2px solid black;
-  margin: 10px;
-  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 20px 10px 20px 10px;
+  border-bottom: 2px solid white;
+  width: 100%;
 }
 
 .form-width {
@@ -75,3 +122,12 @@ button > a {
   background-color: red;
 }
 
+.footer{
+  max-height: 35px;
+  text-align: right;
+}
+
+.footer > h5 {
+  opacity: 0.6;
+  padding: 10px 10px 0 0;
+}

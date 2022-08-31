@@ -16,7 +16,7 @@
             <% if (user) { %>
                 <ul class="nav navbar-dark bg-dark fixed-top nav-tabs">
                     <div class="nav col">
-                        <li class="nav-item"><a class="navbar-brand active" aria-current="page" href="/posts">Tinster</a></li>
+                        <li class="nav-item"><a class="navbar-brand" href="/posts">Tinster</a></li>
                     </div>
                     <div class="nav navbar-dark bg-dark">
                         <li class="nav-item"><a href="/posts" class="nav-link active" aria-current="page">Home</a></li>
@@ -29,19 +29,19 @@
         </nav>
     </header>
 
-    <main>
+    <main class="back-color">
         <div class="text-center flex-ctr">
-        <h3>TINSTER</h3>
+        <h4 class="title">Tinster Posts</h4>
             <!-- List Posts -->
             <% for (let i = posts.length - 1; i >= 0; i--) { %>
                 <div class="post">
-                    <ul>
-                        <li>
+                    <div>
+                        <div>
                             <div class="index-image">
                                 <img src="<%= posts[i].img %>" alt="Cannot find image">
                                 
                             </div>
-                        </li>
+                        </div>
                         <span>
                             <% if (user.avatar) { %>
                                 <img src="<%= user.avatar %>" alt="" class="circle responsive-img">&nbsp;&nbsp;
@@ -52,21 +52,23 @@
                         <span>
                             <%= posts[i].username %>
                         </span>
-                        <li><%= posts[i].description %></li>
-                        <li>
+                        <div><%= posts[i].description %></div>
+                        <div>
                             <% if (posts[i].likes.length === 1) { %>
                               <%= posts[i].likes.length %> Like
                             <% } else { %>
                               <%= posts[i].likes.length %> Likes
                             <% } %>
-                        </li>
+                            </div>
                         <a href="/posts/<%= posts[i]._id %>">View Comments & Like Post</a>
-                    </ul>
+                    </div>
                     <p> Created on <%= posts[i].createdAt%></p>
                 </div>
             <% } %>
         </div>
     </main>
-    
+    <footer class="fixed-bottom bg-dark footer">
+        <h5>Created by Tosin</h5>
+    </footer>
   </body>
 </html>
