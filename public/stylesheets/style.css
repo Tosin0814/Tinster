@@ -5,6 +5,11 @@
 body {
   height: 100vh;
   margin: 0;
+  padding-top: 50px;
+}
+
+.navbar-brand {
+  font-size: 25px;
 }
 
 li {
