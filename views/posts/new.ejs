@@ -4,30 +4,25 @@
     <title>New Tinster Post</title>
     <!-- Google Icon Fonts used by Materialize -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Materialize CSS Framework -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Bootstrap CSS Framework-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    
-    <!-- JavaScript for Materialize -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- JavaScript for Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
     <header>
-        <a href="/posts" class="brand-logo left">Tinster Posts</a>
-        <!-- Add logout UI here -->
-        <ul class="right">
-            <li>
-            <% if (user) { %>
-                <a href="/posts/new">ADD POST</a>
-                <a href="/posts/all">My Posts</a>
-                <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-            <% } %>
-            </li>
-        </ul>
+      <nav class="navbar navbar-dark bg-dark">
+      <% if (user) { %>
+          <a class="navbar-brand" href="/posts">Tinster</a>
+          <div class="justify-content-end">
+              <a href="/posts/new" class="nav-item">Create Post</a>
+              <a href="/posts/all" class="nav-item">My Posts</a>
+              <a href="/logout" class="nav-item">Log Out</a>
+          </div>
+          
+      <% } %>
+      </nav>
     </header>
 
     <main>
@@ -36,6 +31,10 @@
             <form id="new-form" action="/posts" method="post">
                 <label>Image </label>
                 <input type="text" name="img" placeholder="Enter image URL">
+                <br>
+                <br>
+                <label>Title </label>
+                <input type="text" name="title">
                 <br>
                 <br>
                 <label>Description </label>

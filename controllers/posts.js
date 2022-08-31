@@ -42,7 +42,7 @@ function show(req, res) {
     .then(function (post) {
         res.render('posts/show', {
             user: req.user,
-            post
+            post,
         })
     }).catch(function (err) {
         console.log(err)

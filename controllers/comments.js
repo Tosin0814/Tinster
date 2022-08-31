@@ -11,6 +11,17 @@ function create(req, res) {
     })
 }
 
+function deleteComment(req, res) {
+    Post.findOne({'comments._id': req.params.id}, function(err, post) {
+        const commentSubdoc = post.comments.id(req.params.id);
+        commentSubdoc.remove();
+        post.save(function(err) {
+            res.redirect(`/posts/${post._id}`);
+        });
+    })
+}
+
 module.exports = {
     create,
+    deleteComment,
 }

@@ -14,17 +14,6 @@ const commentSchema = new Schema({
     timestamps: true
 })
 
-const likeSchema = new Schema({
-    userId: {
-        type: Schema.Types.ObjectId
-    },
-    username: {
-        type: String
-    },
-
-},{
-    timestamps: true
-})
 
 const postSchema = new Schema({
     username: String,
@@ -37,7 +26,7 @@ const postSchema = new Schema({
         type: Schema.Types.ObjectId,
     },
     comments: [commentSchema],
-    likes: [likeSchema],
+    likes: [Schema.Types.ObjectId,],
   }, {
     timestamps: true
   });

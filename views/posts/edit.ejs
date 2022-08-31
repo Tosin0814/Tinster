@@ -17,18 +17,18 @@
   </head>
   <body>
     <header>
-        <a href="/posts" class="brand-logo left">Tinster Posts</a>
-        <!-- Add logout UI here -->
-        <ul class="right">
-            <li>
-            <% if (user) { %>
-                <a href="/posts/new">ADD POST</a>
-                <a href="/posts/all">My Posts</a>
-                <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-            <% } %>
-            </li>
-        </ul>
-    </header>
+      <nav class="navbar fixed-top navbar-dark bg-dark">
+      <% if (user) { %>
+          <a class="navbar-brand" href="/posts">Tinster</a>
+          <div class="justify-content-end">
+              <a href="/posts/new" class="nav-item">Create Post</a>
+              <a href="/posts/all" class="nav-item active" aria-current="page">My Posts</a>
+              <a href="/logout" class="nav-item">Log Out</a>
+          </div>
+          
+      <% } %>
+      </nav>
+  </header>
 
     <main>
         <p><%= user.name %> has successfully signed in!</p>

@@ -5,11 +5,10 @@
 body {
   height: 100vh;
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+li {
+  list-style-type: none;
 }
 
 .flex-ctr {
@@ -68,3 +67,4 @@ button > a {
   right: 3px;
   background-color: red;
 }
+
