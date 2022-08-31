@@ -19,6 +19,7 @@
                     <li class="nav-item"><a class="navbar-brand" href="/posts">Tinster</a></li>
                 </div>
                 <div class="nav navbar-dark bg-dark">
+                    <li class="nav-item"><a href="/posts" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="/posts/new" class="nav-link active" aria-current="page">Create Post</a></li>
                     <li class="nav-item"><a href="/posts/all" class="nav-link">My Posts</a></li>
                     <li class="nav-item"><a href="/logout" class="nav-link">Log Out</a></li>
@@ -29,7 +30,7 @@
     </header>
 
     <main>
-        <p><%= user.name %> has successfully signed in!</p>
+        <h4>Create New Post</h4>
         <div class="form-width flex-ctr">
             <form id="new-form" action="/posts" method="post">
                 <label>Image </label>

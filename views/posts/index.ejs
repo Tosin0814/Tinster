@@ -19,6 +19,7 @@
                         <li class="nav-item"><a class="navbar-brand active" aria-current="page" href="/posts">Tinster</a></li>
                     </div>
                     <div class="nav navbar-dark bg-dark">
+                        <li class="nav-item"><a href="/posts" class="nav-link active" aria-current="page">Home</a></li>
                         <li class="nav-item"><a href="/posts/new" class="nav-link">Create Post</a></li>
                         <li class="nav-item"><a href="/posts/all" class="nav-link">My Posts</a></li>
                         <li class="nav-item"><a href="/logout" class="nav-link">Log Out</a></li>
@@ -30,7 +31,7 @@
 
     <main>
         <div class="text-center flex-ctr">
-        <p><%= user.name %> has successfully signed in!</p>
+        <h3>TINSTER</h3>
             <!-- List Posts -->
             <% for (let i = posts.length - 1; i >= 0; i--) { %>
                 <div class="post">
