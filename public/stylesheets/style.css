@@ -10,7 +10,6 @@ body {
 }
 
 .index-body {
-  /* background-color: wheat; */
   background: url('../images/alexandra-kirr-Q_MYbs7KdcU-unsplash.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -32,7 +31,6 @@ body {
   background-color: rgba(0, 0, 0, 0.05);
   max-width: 50%;
   margin: 0 auto;
-  padding: 10px;
   text-align: center;
 }
 
@@ -40,7 +38,8 @@ body {
   border-bottom: 4px double rgba(0, 0, 0, 0.3);
   width: 100%;
   margin-bottom: 20px;
-  padding-top: 40px;
+  padding-top: 70px;
+  text-align: center;
 }
 
 .post-area {
@@ -92,8 +91,6 @@ button > a {
   box-shadow: 3px 3px 4px black;
 }
 
-
-
 .post {
   margin-top: 20px;
   margin-bottom: 40px;
@@ -103,10 +100,25 @@ button > a {
 }
 
 .form-width {
-  margin: 100px auto;
-  width: 50%;
+  margin: 80px auto;
   border: 1px solid black;
-  /* background-color: red; */
+  max-width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+
+.new-post-image {
+  width: 95%;
+  text-align: center;
+}
+
+.new-post-title {
+  width: 95%;
+  text-align: center;
+}
+
+.new-post-description {
+  width: 95%;
 }
 
 .like {

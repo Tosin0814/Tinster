@@ -29,21 +29,27 @@
       </nav>
     </header>
 
-    <main class="back-color">
+    <main>
         <h4 class="title">Create New Post</h4>
         <div class="form-width flex-ctr">
-            <form id="new-form" action="/posts" method="post">
+            <form id="new-post" action="/posts" method="post">
+                <label>Post Title </label>
+                <br>
+                <input class="new-post-title" type="text" name="title" placeholder="Post Title">
+                <br>
+                <br>
                 <label>Image </label>
-                <input type="text" name="img" placeholder="Enter image URL">
                 <br>
-                <br>
-                <label>Title </label>
-                <input type="text" name="title">
+                <input class="new-post-image" type="text" name="img" placeholder="Enter image URL">
                 <br>
                 <br>
                 <label>Description </label>
-                <input type="text" name="description">
-                <input type="submit" value="Create Post">
+                <br>
+                <textarea class="new-post-description" name="description" cols="50" rows="3"></textarea>
+                <br>
+                <br>
+                <input class="btn btn-primary" type="submit" value="Create Post">
+                <br>
             </form>
         </div>
     </main>
