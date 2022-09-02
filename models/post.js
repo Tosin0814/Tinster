@@ -20,8 +20,12 @@ const postSchema = new Schema({
     title: String,
     img: { 
         type: String,
+        required: true,
     },
-    description: String,
+    description: {
+        type: String,
+        // required: true,
+    },
     userId: {
         type: Schema.Types.ObjectId,
     },

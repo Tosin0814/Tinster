@@ -69,35 +69,17 @@ function editPost(req, res) {
     })
 }
 
-
-// function updatePost(req, res) {
-//     Post.findById(req.params.id, function (err, post) {
-//         post.update(req.body, function () {
-//             res.redirect(`/posts/${post._id}`)
-//         })
-//     })
-// }
-
 function updatePost(req, res) {
     Post.findById(req.params.id)
     .then(function (post) {
         post.update(req.body, function () {
-            res.redirect(`/posts/${post._id}`)
+            res.redirect(`/posts/all`)
         })
     })
     .catch(function (err) {
         
     })
 }
-
-// function deletePost(req, res) {
-//     Post.findById(req.params.id, function (err, post) {
-//         post.remove(function (err) {
-//             res.redirect('/posts/all')
-
-//         })
-//     })
-// }
 
 function deletePost(req, res) {
     Post.findById(req.params.id)
