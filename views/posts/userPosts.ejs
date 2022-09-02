@@ -32,40 +32,50 @@
     <main class="back-color">
         <h4 class="title">My Posts</h4>
         <div class="text-center flex-ctr">
-            <% for (let i = posts.length - 1; i >= 0; i--) { %>
-                <div class="post">
-                    <div>
-                        <div class="index-image"><img src="<%= posts[i].img %>" alt="Cannot find image"></div>
-                        <span>
-                            <% if (user.avatar) { %>
-                                <img src="<%= user.avatar %>" alt="" class="circle responsive-img">&nbsp;&nbsp;
-                            <% } else { %>
-                                <i class="small material-icons">perm_identity</i>
-                            <% } %>
-                        </span>
-                        <span>
-                        <%= posts[i].username %>
-                        </span>
-                        <div><%= posts[i].description %></div>
+            <% if (posts.length) { %>
+                <% for (let i = posts.length - 1; i >= 0; i--) { %>
+                    <div class="post">
                         <div>
-                            <% if (posts[i].likes.length === 1) { %>
-                              <%= posts[i].likes.length %> Like
-                            <% } else { %>
-                              <%= posts[i].likes.length %> Likes
-                            <% } %>
+                            <div class="post-title"><h5><%= posts[i].title %></h5></div>
+                            <div class="index-image"><img src="<%= posts[i].img %>" alt="Cannot find image"></div>
+                            <div  class="user-info">
+                                <span>
+                                    <% if (user.avatar) { %>
+                                        <img src="<%= user.avatar %>" alt="" class="circle responsive-img">&nbsp;&nbsp;
+                                    <% } else { %>
+                                        <i class="small material-icons">perm_identity</i>
+                                    <% } %>
+                                </span>
+                                <span>
+                                <%= posts[i].username %>
+                                </span>
                             </div>
-                        <a href="/posts/<%= posts[i]._id %>">View Comments & Like Post</a>
+                            <div class="post-description"><%= posts[i].description %></div>
+                            <div class="likes">
+                                <% if (posts[i].likes.length === 1) { %>
+                                  <%= posts[i].likes.length %> Like
+                                <% } else { %>
+                                  <%= posts[i].likes.length %> Likes
+                                <% } %>
+                            </div>
+                            <br>
+                            <a href="/posts/<%= posts[i]._id %>"><button class="btn btn-primary">Like & View Comments</button></a>
+                        </div>
+                        <br>
+                        <div class="edit-post">
+                            <form name="edit" action="/posts/<%= posts[i]._id %>/edit">
+                                <button class="btn btn-secondary" type="submit">Edit</button>
+                            </form>
+                            <form action="/posts/<%= posts[i]._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger" type="submit">Delete</button>
+                            </form>
+                        </div>
+                        <br>
+                        <p class="creation-date"> Created on <%= posts[i].createdAt%></p>
                     </div>
-                    <div>
-                        <form name="edit" action="/posts/<%= posts[i]._id %>/edit">
-                            <button type="submit">Edit Post</button>
-                        </form>
-                        <form action="/posts/<%= posts[i]._id %>?_method=DELETE" method="POST">
-                            <button type="submit">Delete Post</button>
-                        </form>
-                    </div>
-                    <p> Created on <%= posts[i].createdAt%></p>
-                </div>
+                <% } %>
+            <% } else { %>
+                <p>You have no posts yet</p>
             <% } %>
         </div>
     </main>

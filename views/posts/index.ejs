@@ -42,27 +42,30 @@
                                 
                             </div>
                         </div>
-                        <span>
-                            <% if (user.avatar) { %>
-                                <img src="<%= user.avatar %>" alt="" class="circle responsive-img">&nbsp;&nbsp;
-                            <% } else { %>
-                                <i class="small material-icons">perm_identity</i>
-                            <% } %>
-                        </span>
-                        <span>
-                            <%= posts[i].username %>
-                        </span>
-                        <div><%= posts[i].description %></div>
-                        <div>
+                        <div class="user-info">
+                            <span>
+                                <% if (user.avatar) { %>
+                                    <img src="<%= user.avatar %>" alt="" class="circle responsive-img">&nbsp;&nbsp;
+                                <% } else { %>
+                                    <i class="small material-icons">perm_identity</i>
+                                <% } %>
+                            </span>
+                            <span>
+                                <%= posts[i].username %>
+                            </span>
+                        </div>
+                        <div class="post-description"><%= posts[i].description %></div>
+                        <div class="likes">
                             <% if (posts[i].likes.length === 1) { %>
                               <%= posts[i].likes.length %> Like
                             <% } else { %>
                               <%= posts[i].likes.length %> Likes
                             <% } %>
-                            </div>
-                        <a href="/posts/<%= posts[i]._id %>">View Comments & Like Post</a>
+                        </div>
+                        <a href="/posts/<%= posts[i]._id %>"><button class="btn btn-primary">Like Post & View Comments</button></a>
                     </div>
-                    <p> Created on <%= posts[i].createdAt%></p>
+                    <br>
+                    <p class="creation-date"> Created on <%= posts[i].createdAt%></p>
                 </div>
             <% } %>
         </div>

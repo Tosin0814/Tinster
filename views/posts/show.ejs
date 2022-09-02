@@ -29,80 +29,99 @@
       </nav>
     </header>
     <main class="post-area">
-        <div class="text-center flex-ctr">
-        <h4 class="title">
-          <% if (post.title) { %>
-            <%= post.title %>
-          <% } else { %>
-            Post
-          <% } %>
-        </h4>
-                <div class="post">
-                    <div>
-                        <div>
-                          <div class="show-image">
-                            <img src="<%= post.img %>" alt="Cannot find image">
-                            <% if (post.likes.includes(user._id)) { %>
-                                <form name="remove-like-form" action="/likes/<%= post._id %>?_method=DELETE" method="post">
-                                    <button class="liked" type="submit">Liked</button>
-                                </form>
-                            <% } else { %>
-                                <form name="add-like-form" action="/posts/<%= post._id %>/likes" method="POST">
-                                    <button class="like" type="submit">Like</button>
-                                </form>
-                            <% } %>
-                          </div>
-                        </div>
-                        <span>
-                          <% if (user.avatar) { %>
-                              <img src="<%= user.avatar %>" alt="" class="circle responsive-img">&nbsp;&nbsp;
-                          <% } else { %>
-                              <i class="small material-icons">perm_identity</i>
-                          <% } %>
-                        </span>
-                        <span>
-                          <%= post.username %>
-                        </span>
-                        <div><%= post.description %></div>
-                        <div>
-                          <% if (post.likes.length === 1) { %>
-                            <%= post.likes.length %> Like
-                          <% } else { %>
-                            <%= post.likes.length %> Likes
-                          <% } %>
-                          </div>
-                    </div>
-                    <p> Created on <%= post.createdAt%></p>
-                    <div>
-                        <h5>Comments</h5>
-                        <form id="add-comment-form" action="/posts/<%= post._id %>/comments" method="POST">
-                          <textarea name="commentText" placeholder="Add Comment" cols="50" rows="3"></textarea>
-                          <input type="submit" value="Add Comment">
-                        </form>
-                    </div>
-                    <br><hr>
-                    <% if (post.comments.length) { %>
-                      <% for (let i = post.comments.length - 1; i >= 0; i--) { %>
-                          <span class="card-title">
-                            <% if (user.avatar) { %>
-                              <img src="<%= user.avatar %>" alt="" class="circle responsive-img">&nbsp;&nbsp;
-                            <% } else { %>
-                              <i class="small material-icons">perm_identity</i>
-                            <% } %>                        
-                          </span>
-                          <h6><%= post.comments[i].username %></h6>
-                          <p><%= post.comments[i].commentText %></p>
-                          <% if (post.comments[i].userId.equals(user._id)) { %>
-                            <form action="/comments/<%= post.comments[i]._id %>?_method=DELETE" method="POST">
-                              <button type="submit">X</button>
-                            </form>
-                          <% } %>
-                          <p> Created on <%= post.comments[i].createdAt%></p>
+        <div class="flex-ctr">
+          <h4 class="title">
+            <% if (post.title) { %>
+              <%= post.title %>
+            <% } else { %>
+              Post
+            <% } %>
+          </h4>
+          <div class="post">
+              <div>
+                  <div>
+                    <div class="show-image">
+                      <img src="<%= post.img %>" alt="Cannot find image">
+                      <% if (post.likes.includes(user._id)) { %>
+                          <form name="remove-like-form" action="/likes/<%= post._id %>?_method=DELETE" method="post">
+                              <button class="liked" type="submit">Liked!</button>
+                          </form>
+                      <% } else { %>
+                          <form name="add-like-form" action="/posts/<%= post._id %>/likes" method="POST">
+                              <button class="like" type="submit">Like</button>
+                          </form>
                       <% } %>
+                    </div>
+                  </div>
+                  <div class="user-info">
+                    <span>
+                      <% if (user.avatar) { %>
+                          <img src="<%= user.avatar %>" alt="" class="circle responsive-img">&nbsp;&nbsp;
+                      <% } else { %>
+                          <i class="small material-icons">perm_identity</i>
+                      <% } %>
+                    </span>
+                    <span>
+                      <%= post.username %>
+                    </span>
+                  </div>
+                  <div class="post-description"><%= post.description %></div>
+                  <div class="likes">
+                    <% if (post.likes.length === 1) { %>
+                      <%= post.likes.length %> Like
                     <% } else { %>
-                      <h6>No comments</h6>
+                      <%= post.likes.length %> Likes
                     <% } %>
-                </div>
+                  </div>
+                  <br>
+              </div>
+              <p class="creation-date"> Created on <%= post.createdAt%></p>
+              <hr>
+              <div>
+                  <form id="add-comment-form" action="/posts/<%= post._id %>/comments" method="POST">
+                    <textarea name="commentText" placeholder="Add Comment" cols="50" rows="2"></textarea>
+                    <br>
+                    <input class="btn btn-light" type="submit" value="Add Comment">
+                  </form>
+              </div>
+              <br>
+              <br>
+              <h5>Comments</h5>
+              <hr>
+              <% if (post.comments.length) { %>
+                <% for (let i = post.comments.length - 1; i >= 0; i--) { %>
+                    <div class="comment">
+                      <div class="comment-user-info">
+                        <span class="card-title">
+                          <% if (user.avatar) { %>
+                            <img src="<%= user.avatar %>" alt="" class="circle responsive-img">&nbsp;&nbsp;
+                          <% } else { %>
+                            <i class="small material-icons">perm_identity</i>
+                          <% } %>                        
+                        </span>
+                        <span><%= post.comments[i].username %></span>
+                      </div>
+                      <hr>
+                      <div class="comment-content">
+                        <div class="comment-text text-break">
+                          <p><%= post.comments[i].commentText %></p>
+                        </div>
+                        <% if (post.comments[i].userId.equals(user._id)) { %>
+                          <div>
+                            <form action="/comments/<%= post.comments[i]._id %>?_method=DELETE" method="POST">
+                              <button class="btn btn-danger" type="submit">X</button>
+                            </form>
+                          </div>
+                        <% } %>
+                      </div>
+                      <p class="comment-creation-date"> Created on <%= post.comments[i].createdAt%></p>
+                    </div>
+                    <br>
+                <% } %>
+              <% } else { %>
+                <h6>No comments</h6>
+              <% } %>
+          </div>
         </div>
       </main>
     <footer class="fixed-bottom bg-dark footer">

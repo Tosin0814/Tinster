@@ -4,43 +4,47 @@
     <title>Edit Tinster Post</title>
     <!-- Google Icon Fonts used by Materialize -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Materialize CSS Framework -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Bootstrap CSS Framework-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    
-    <!-- JavaScript for Materialize -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- JavaScript for Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
     <header>
-      <nav class="navbar fixed-top navbar-dark bg-dark">
-      <% if (user) { %>
-          <a class="navbar-brand" href="/posts">Tinster</a>
-          <div class="justify-content-end">
-              <a href="/posts/new" class="nav-item">Create Post</a>
-              <a href="/posts/all" class="nav-item active" aria-current="page">My Posts</a>
-              <a href="/logout" class="nav-item">Log Out</a>
-          </div>
-          
-      <% } %>
+      <nav>
+        <% if (user) { %>
+            <ul class="nav navbar-dark bg-dark fixed-top nav-tabs">
+                <div class="nav col">
+                    <li class="nav-item"><a class="navbar-brand" href="/posts">Tinster</a></li>
+                </div>
+                <div class="nav navbar-dark bg-dark">
+                    <li class="nav-item"><a href="/posts" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/posts/new" class="nav-link">Create Post</a></li>
+                    <li class="nav-item"><a href="/posts/all" class="nav-link">My Posts</a></li>
+                    <li class="nav-item"><a href="/logout" class="nav-link">Log Out</a></li>
+                </div>
+            </ul>
+        <% } %>
       </nav>
   </header>
 
     <main>
-        <p><%= user.name %> has successfully signed in!</p>
+        <h4 class="title">Edit <%= post.title %></h4>
         <div class="form-width flex-ctr">
             <form id="edit-form" action="/posts/<%= post._id %>?_method=PUT" method="POST">
+                <label>Post Title </label>
+                <br>
+                <input class="new-post-title" type="text" name="title" value="<%= post.title %>">
+                <br>
+                <br>
                 <label>Image </label>
-                <input type="text" name="img" value="<%= post.img %>">
+                <input class="new-post-image" type="text" name="img" value="<%= post.img %>">
                 <br>
                 <br>
                 <label>Description </label>
-                <input type="text" name="description" value="<%= post.description %>">
-                <input type="submit" value="Save">
+                <textarea class="new-post-description" name="description" cols="50" rows="3"><%= post.description %></textarea>
+                <input class="btn btn-success" type="submit" value="Save">
             </form>
         </div>
     </main>
