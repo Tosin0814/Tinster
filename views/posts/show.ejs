@@ -30,7 +30,7 @@
     </header>
     <main class="post-area">
         <div class="flex-ctr">
-          <h4 class="title">
+          <h4 class="title text-decoration-underline">
             <% if (post.title) { %>
               <%= post.title %>
             <% } else { %>
@@ -42,15 +42,6 @@
                   <div>
                     <div class="show-image">
                       <img src="<%= post.img %>" alt="Cannot find image">
-                      <% if (post.likes.includes(user._id)) { %>
-                          <form name="remove-like-form" action="/likes/<%= post._id %>?_method=DELETE" method="post">
-                              <button class="liked" type="submit">Liked!</button>
-                          </form>
-                      <% } else { %>
-                          <form name="add-like-form" action="/posts/<%= post._id %>/likes" method="POST">
-                              <button class="like" type="submit">Like</button>
-                          </form>
-                      <% } %>
                     </div>
                   </div>
                   <div class="user-info">
@@ -66,11 +57,22 @@
                     </span>
                   </div>
                   <div class="post-description"><%= post.description %></div>
+                  <div>
+                    <% if (post.likes.includes(user._id)) { %>
+                      <form name="remove-like-form" action="/likes/<%= post._id %>?_method=DELETE" method="post">
+                          <button class="btn btn-secondary" type="submit">Liked! 👍</button>
+                      </form>
+                    <% } else { %>
+                        <form name="add-like-form" action="/posts/<%= post._id %>/likes" method="POST">
+                            <button class="btn btn-light" type="submit">Like</button>
+                        </form>
+                    <% } %>
+                  </div>
                   <div class="likes">
                     <% if (post.likes.length === 1) { %>
-                      <%= post.likes.length %> Like
+                      &#10084; <%= post.likes.length %> Like
                     <% } else { %>
-                      <%= post.likes.length %> Likes
+                      &#10084; <%= post.likes.length %> Likes
                     <% } %>
                   </div>
                   <br>

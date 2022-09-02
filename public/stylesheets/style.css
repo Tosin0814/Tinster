@@ -35,7 +35,6 @@ body {
 }
 
 .title {
-  border-bottom: 4px double rgba(0, 0, 0, 0.3);
   width: 100%;
   margin-bottom: 20px;
   padding-top: 70px;
@@ -64,7 +63,6 @@ li {
   align-items: center;
   width: 100%;
   height: 100%;
-  /* background-color: red; */
 }
 
 button > a {
@@ -87,7 +85,7 @@ button > a {
 }
 
 .show-image > img {
-  width: 90%;
+  width: 80%;
   border: 1px solid black;
   box-shadow: 3px 3px 4px black;
 }
@@ -102,7 +100,7 @@ button > a {
 
 .form-width {
   margin: 80px auto;
-  border: 1px solid black;
+  border: 2px solid rgba(250, 250, 250, 0.2);
   max-width: 50%;
   padding: 10px;
   text-align: center;
@@ -132,7 +130,6 @@ button > a {
 }
 
 .post-description {
-  /* background-color: red; */
   text-align: center;
   padding: 5px 0px 5px 20px;
   font-size: 20px;
@@ -142,7 +139,6 @@ button > a {
 .likes {
   text-align: center;
   opacity: 0.9;
-  padding: 5px 0px 5px 20px;
 }
 
 .creation-date {
@@ -187,14 +183,6 @@ button > a {
   padding-right: 5px;
 }
 
-.like {
-  position: absolute;
-  top: 0px;
-  right: -10px;
-  width: 55px;
-  text-align: center;
-}
-
 .edit-post {
   display: flex;
   flex-direction: row;
@@ -202,14 +190,6 @@ button > a {
   margin: 0px 20px 0px 20px;
 }
 
-.liked {
-  position: absolute;
-  width: 55px;
-  top: 0px;
-  right: -10px;
-  text-align: center;
-  background-color: red;
-}
 
 .footer{
   max-height: 35px;
