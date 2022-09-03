@@ -33,15 +33,15 @@
         <h4 class="title text-decoration-underline">Create New Post</h4>
         <div class="form-width flex-ctr">
             <form id="new-post" action="/posts" method="post" enctype="multipart/form-data">
+                <label>Upload Image File (.heic not supported)</label>
+                <br>
+                <br>
+                <input class="new-post-image" type="file" name="img">
+                <br>
+                <br>
                 <label>Post Title </label>
                 <br>
                 <input class="new-post-title" type="text" name="title" placeholder="Post Title">
-                <br>
-                <br>
-                <label>Upload Image </label>
-                <br>
-                <input class="new-post-image" type="file" name="img">
-                <!-- <input type="submit" value="Add Image"> -->
                 <br>
                 <br>
                 <label>Description </label>

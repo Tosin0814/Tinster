@@ -28,13 +28,10 @@ function newPost(req, res) {
 
 function create(req, res) {
     const path = req.file.path.split('/').slice(1).join('/');
-    console.log(path);
-    console.log('req.file: ', path)
     const newPost = new Post(req.body);
     newPost.img = path
     newPost.username = req.user.name
     newPost.userId = req.user._id;
-    console.log(newPost)
     newPost.save()
     .then(function () {
         res.redirect('/posts')

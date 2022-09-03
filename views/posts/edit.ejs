@@ -30,7 +30,7 @@
   </header>
 
     <main>
-        <h4 class="title text-decoration-underline">Edit <%= post.title %></h4>
+        <h4 class="title text-decoration-underline">Edit "<%= post.title %>"</h4>
         <div class="form-width flex-ctr">
             <form id="edit-form" action="/posts/<%= post._id %>?_method=PUT" method="POST">
                 <label>Post Title </label>
