@@ -67,6 +67,7 @@
 - Mongoose
 - Google OAUTH
 - Passport
+- Heroku
 
 <br>
 <br>
