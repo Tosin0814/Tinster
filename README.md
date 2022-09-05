@@ -92,3 +92,4 @@
 - Add a search bar for posts or creators
 - Have a user profile page with Avatar, Bio, etc
 - Make file uploads compatible with .HEIC file type and handle possibility of conflicting image filenames in database
+- Delete image from folder when post is deleted
