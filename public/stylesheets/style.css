@@ -34,6 +34,15 @@ body {
   text-align: center;
 }
 
+@media only screen and (max-height: 425px) {
+  .back-color{
+    background-color: rgba(255, 255, 255, 0.05);
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
 .title {
   width: 100%;
   margin-bottom: 20px;
