@@ -1,5 +1,5 @@
 # Tinster
-- Tinster is a fullstack photo sharing web application, where users can create and interact with posts.
+- Tinster is a MEN stack photo sharing web application, where users can create and interact with posts.
 
 # Screenshots
 ### Login Page
@@ -88,6 +88,7 @@
 
 # Next Steps
 - Make Tinster more mobile friendly.
+- Fix issue that causes app to crash if no user is found
 - Change timestamp formatting for creation date & time
 - Add edit comment functionality
 - Prevent full page reload after posting comment or like

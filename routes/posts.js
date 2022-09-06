@@ -29,17 +29,22 @@ const upload = multer({
   })
 })
 
+function isLoggedIn(req, res, next) {
+  if ( req.isAuthenticated() ) return next();
+  res.redirect('/auth/google');
+}
 
 
-router.get('/', postsCtrl.index);
-router.get('/', postsCtrl.userPosts)
-router.get('/new', postsCtrl.new);
+router.get('/', isLoggedIn, postsCtrl.index);
+// router.get('/', isLoggedIn, postsCtrl.userPosts)
+router.get('/new', isLoggedIn, postsCtrl.new);
 router.post('/', upload.single('img'), postsCtrl.create);
-router.get('/all', postsCtrl.userPosts)
-router.get('/:id', postsCtrl.show)
+router.get('/all', isLoggedIn, postsCtrl.userPosts)
+router.get('/:id', isLoggedIn, postsCtrl.show)
 router.get('/:id/edit', postsCtrl.editPost)
 router.put('/:id', postsCtrl.updatePost)
 router.delete('/:id', postsCtrl.deletePost)
 
 
 module.exports = router;
+
