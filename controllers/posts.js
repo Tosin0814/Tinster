@@ -27,9 +27,9 @@ function newPost(req, res) {
 }
 
 function create(req, res) {
-    const path = req.file.path.split('/').slice(1).join('/');
+    // const path = req.file.path.split('/').slice(1).join('/');
     const newPost = new Post(req.body);
-    newPost.img = path
+    newPost.img = req.file.location
     newPost.username = req.user.name
     newPost.userId = req.user._id;
     newPost.save()

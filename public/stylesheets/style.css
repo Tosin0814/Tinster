@@ -29,15 +29,16 @@ body {
 
 .back-color{
   background-color: rgba(255, 255, 255, 0.05);
-  max-width: 50%;
+  width: 50%;
   margin: 0 auto;
   text-align: center;
 }
 
-@media only screen and (max-height: 425px) {
+/* not working (fix soon) */
+@media only screen and (max-width: 425px) {
   .back-color{
     background-color: rgba(255, 255, 255, 0.05);
-    max-width: 80%;
+    width: 80%;
     margin: 0 auto;
     text-align: center;
   }
