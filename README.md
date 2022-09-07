@@ -96,3 +96,4 @@
 - Have a user profile page with Avatar, Bio, etc
 - Make file uploads compatible with .HEIC file type
 - Delete image from folder when post is deleted
+- Improve error handling
