@@ -1,5 +1,5 @@
 # Tinster
-- Tinster is a MEN stack photo sharing web application, where users can create and interact with posts.
+- Tinster is a MEN Stack photo sharing web application, where users can create and interact with posts.
 
 # Screenshots
 ### Login Page
@@ -78,7 +78,7 @@
 
 - The link to Tinster deployed on Heroku, can be found below.
 
-        ...
+        https://tinsterr.herokuapp.com
 - The link to the Trello board with the project's planning is:
 
         https://trello.com/invite/b/iHKrFTJW/7f8112d3e8e8c63eb5ab5a102b14ca8b/tinster
