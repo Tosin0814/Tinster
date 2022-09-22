@@ -1,7 +1,4 @@
-const User = require("../models/user");
 const Post = require("../models/post");
-const { default: mongoose } = require("mongoose");
-const post = require("../models/post");
 
 
 function index(req, res, next) {
