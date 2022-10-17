@@ -55,6 +55,12 @@
                             </span>
                         </div>
                         <div class="post-description"><%= posts[i].description %></div>
+                        <br>
+                        <div>
+                            <% if (posts[i].likes.includes(user._id)) { %>
+                                <p>Liked! 👍</p>
+                            <% } %>
+                        </div>
                         <div class="likes">
                             <% if (posts[i].likes.length === 1) { %>
                                 &#10084; <%= posts[i].likes.length %> Like
