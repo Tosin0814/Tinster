@@ -2,10 +2,12 @@ const Post = require('../models/post')
 
 function create(req, res) {
     Post.findById(req.params.id, function(err,post){
-        post.likes.push(req.user._id);
-        post.save(function (err) {
-            res.redirect(`/posts/${post._id}`)
-        })
+        if(post.likes.includes(req.user._id) == false){
+            post.likes.push(req.user._id);
+            post.save(function (err) {
+                res.redirect(`/posts/${post._id}`)
+            })
+        }
     })
 }
 

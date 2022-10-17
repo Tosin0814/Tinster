@@ -59,20 +59,30 @@
                   <div class="post-description"><%= post.description %></div>
                   <div>
                     <% if (post.likes.includes(user._id)) { %>
-                      <form name="remove-like-form" action="/likes/<%= post._id %>?_method=DELETE" method="post">
-                          <button class="btn btn-secondary" type="submit">Liked! 👍</button>
+                      <form id="unlike-post" name="remove-like-form" action="/likes/<%= post._id %>?_method=DELETE" method="post">
+                          <button class="btn btn-secondary unlike-post-btn" type="submit">Liked! 👍</button>
                       </form>
                     <% } else { %>
-                        <form name="add-like-form" action="/posts/<%= post._id %>/likes" method="POST">
-                            <button class="btn btn-light" type="submit">Like</button>
+                        <form id="like-post" name="add-like-form" action="/posts/<%= post._id %>/likes" method="POST">
+                            <button class="btn btn-light like-post-btn" type="submit">Like</button>
                         </form>
                     <% } %>
                   </div>
                   <div class="likes">
                     <% if (post.likes.length === 1) { %>
-                      &#10084; <%= post.likes.length %> Like
+                      <p class="like-number">&#10084; <%= post.likes.length %> Like</p>
                     <% } else { %>
-                      &#10084; <%= post.likes.length %> Likes
+                      <p class="like-number">&#10084; <%= post.likes.length %> Likes</p>
+                    <% } %>
+                    <% if (post.likes.length + 1 === 1) { %>
+                      <p class="like-number-fake d-none">&#10084; <%= post.likes.length + 1 %> Like</p>
+                    <% } else { %>
+                      <p class="like-number-fake d-none">&#10084; <%= post.likes.length + 1 %> Likes</p>
+                    <% } %>
+                    <% if (post.likes.length - 1 === 1) { %>
+                      <p class="unlike-number-fake d-none">&#10084; <%= post.likes.length - 1 %> Like</p>
+                    <% } else { %>
+                      <p class="unlike-number-fake d-none">&#10084; <%= post.likes.length - 1 %> Likes</p>
                     <% } %>
                   </div>
                   <br>
@@ -129,5 +139,58 @@
     <footer class="fixed-bottom bg-dark footer">
       <h5>Created by Tosin</h5>
     </footer>
+    <script>
+      // alert('connected')
+      const likePost = document.getElementById('like-post')
+      const unlikePost = document.getElementById('unlike-post')
+      if (likePost) {
+        // Prevent reload after liking post
+        likePost.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const formData = new FormData();
+          console.log('formdata: ', formData)
+          fetch("/posts/<%= post._id %>/likes",{
+            method: 'POST',
+            body: formData
+          })
+          .then(data => {
+            console.log('Success:', data);
+            document.querySelector('.like-number').innerHTML = ''
+            document.querySelector('.like-post-btn').classList.remove('btn-light')
+            document.querySelector('.like-post-btn').classList.add('btn-secondary')
+            document.querySelector('.like-post-btn').innerHTML = 'Liked! 👍'
+            document.querySelector('.like-number-fake').classList.remove('d-none')
+          })
+          .catch(error => {
+                  console.error('Error:', error);
+          });
+        })
+      } else if (unlikePost){
+        // Prevent reload after unliking post
+        unlikePost.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const formData = new FormData();
+          console.log('formdata: ', formData)
+          fetch("/likes/<%= post._id %>?_method=DELETE",{
+            method: 'post',
+            body: formData
+          })
+          .then(data => {
+            console.log('Success:', data);
+            document.querySelector('.like-number').innerHTML = ''
+            document.querySelector('.unlike-post-btn').classList.remove('btn-secondary')
+            document.querySelector('.unlike-post-btn').classList.add('btn-light')
+            document.querySelector('.unlike-post-btn').innerHTML = 'Unliked!'
+            document.querySelector('.unlike-number-fake').classList.remove('d-none')
+          })
+          .catch(error => {
+                  console.error('Error:', error);
+          });
+        })
+      }
+      
+
+      
+    </script>
   </body>
 </html>
